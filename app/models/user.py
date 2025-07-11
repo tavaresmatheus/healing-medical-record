@@ -1,5 +1,4 @@
 import uuid
-
 from sqlmodel import SQLModel, Field
 from datetime import datetime, timezone, date
 from typing import Optional
