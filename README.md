@@ -4,7 +4,7 @@ This is the backend of an application designed to manage patient records and med
 
 Technologies used:
 ```
-FatAPI - version 0.116.x
+FastAPI - version 0.116.x
 Python - version 3.12.x
 Docker for containerization
 OpenAPI (Swagger) for automatic API documentation
@@ -17,8 +17,17 @@ To run the application, make sure you have Docker and Docker Compose installed.
 Then, simply run:
 
 ```
-doker compose up
+docker compose up
 ```
+
+If you're using VSCode, and somehow see errors like this:
+
+```
+"Cannot resolve import 'fastapi'" (Pylance reportMissingImports)
+```
+
+We highly recommend you to use the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension on VSCode.
+This app is already configured to work plug-and-play with this extension. This corrects the warnings above.
 
 Access:
 ```
