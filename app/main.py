@@ -1,13 +1,13 @@
 from fastapi import FastAPI
-from .routes import users
+from .controllers import users
+from .database import database
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    database.create_db_and_tables()
+    yield
+
+app = FastAPI(lifespan=lifespan)
+
 app.include_router(users.router)
-
-@app.get('/')
-def home():
-    return {'Hello': 'World'}
-
-@app.get('/about')
-def about():
-    return {'Ab': 'out'}
