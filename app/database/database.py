@@ -6,6 +6,7 @@ from ..models.doctor import Doctor
 from ..models.state import State
 from ..models.doctor_crm import DoctorCrm
 from ..models.doctor_medical_speciality import DoctorMedicalSpeciality
+from ..models.medical_record import MedicalRecord
 
 sqlite_file_name = 'database.db'
 sqlite_url = f'sqlite:///{sqlite_file_name}'
