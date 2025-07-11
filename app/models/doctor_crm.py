@@ -1,8 +1,9 @@
 import uuid
-
 from datetime import datetime, timezone
 from typing import Optional
+
 from sqlmodel import Field, Relationship, SQLModel
+
 from app.models.doctor import Doctor
 from app.models.state import State
 

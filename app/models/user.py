@@ -1,7 +1,8 @@
 import uuid
-from sqlmodel import SQLModel, Field
 from datetime import datetime, timezone, date
 from typing import Optional
+
+from sqlmodel import SQLModel, Field
 
 class User(SQLModel, table=True):
     __tablename__ = 'users'

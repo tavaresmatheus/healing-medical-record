@@ -1,7 +1,9 @@
-from datetime import datetime, timezone
 import uuid
-from sqlmodel import Field, Relationship, SQLModel
+from datetime import datetime, timezone
 from typing import Optional
+
+from sqlmodel import Field, Relationship, SQLModel
+
 from app.models.user import User
 
 class Doctor(SQLModel, table=True):
