@@ -1,0 +1,1 @@
+fastapi[standard-no-fastapi-cloud-cli]>=0.116.0,<0.117.0

@@ -1,0 +1,10 @@
+services:
+  healing-medical-record-python:
+    build:
+      context: .
+    container_name: healing-medical-record-python
+    volumes:
+      - ./:/healing_medical_record
+    ports:
+      - 8080:8080
+    command: "fastapi run app/main.py --port 8080 --reload"
