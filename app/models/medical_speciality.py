@@ -1,12 +1,14 @@
 import uuid
 from datetime import datetime, timezone
-
-from sqlmodel import Field, SQLModel
+from typing import List, Optional
+from sqlmodel import Field, SQLModel, Relationship
 
 class MedicalSpeciality(SQLModel, table=True):
     __tablename__ = 'medical_specialities'
 
     medical_speciality_id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-    name: str = Field(max_length=255)
-    created_at: datetime = Field(default_factory=datetime.now(timezone.utc))
+    name: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime
+
+    doctor_medical_specialities: List['DoctorMedicalSpeciality'] = Relationship(back_populates='medical_speciality')

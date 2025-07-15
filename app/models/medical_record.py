@@ -15,4 +15,4 @@ class MedicalRecord(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.now(timezone.utc))
     updated_at: datetime
 
-    user: Optional[User] = Relationship(back_populates='users')
+    user: Optional[User] = Relationship(back_populates='medical_records')

@@ -1,8 +1,7 @@
 from functools import lru_cache
-
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
+from fastapi import FastAPI
 
 from .controllers import users
 from .database import database
