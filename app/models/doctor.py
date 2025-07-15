@@ -14,3 +14,4 @@ class Doctor(SQLModel, table=True):
     user: 'User' = Relationship(back_populates='doctor')
     doctor_medical_specialities: List['DoctorMedicalSpeciality'] = Relationship(back_populates='doctor')
     doctor_crms: List['DoctorCrm'] = Relationship(back_populates='doctor')
+    medical_records: List['MedicalRecord'] = Relationship(back_populates='doctor')
