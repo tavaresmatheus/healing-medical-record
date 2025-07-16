@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from sqlmodel import Session, select
 from sqlalchemy.exc import SQLAlchemyError
 
-from .base_repository_interface import IBaseRepository, ModelType
+from app.repositories.base.base_repository_interface import IBaseRepository, ModelType
 
 class BaseRepository(Generic[ModelType], IBaseRepository[ModelType]):
     def __init__(self, model: type[ModelType], session: Session):
