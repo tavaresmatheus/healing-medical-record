@@ -1,8 +1,8 @@
-FROM python:3.12-alpine3.22
+FROM python:3.12-slim-bookworm
 
 WORKDIR /healing_medical_record
 
-RUN apk add --no-cache git
+RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /healing_medical_record/requirements.txt
 
