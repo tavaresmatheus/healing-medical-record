@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from sqlmodel import Session, select
 from sqlalchemy.exc import SQLAlchemyError
 
+from app.exceptions.database_exception import DatabaseException
 from app.repositories.base.base_repository_interface import IBaseRepository, ModelType
 
 class BaseRepository(Generic[ModelType], IBaseRepository[ModelType]):
@@ -19,7 +20,7 @@ class BaseRepository(Generic[ModelType], IBaseRepository[ModelType]):
             return model_data
         except SQLAlchemyError as e:
             self.session.rollback()
-            raise HTTPException(status_code=500, detail=e._message())
+            raise DatabaseException(status_code=500, message=e._message())
 
     def get_by_id(self, id: str) -> ModelType | None:
         model = self.session.get(self.model, id)
@@ -41,7 +42,7 @@ class BaseRepository(Generic[ModelType], IBaseRepository[ModelType]):
             self.session.refresh(database_model)
         except SQLAlchemyError as e:
             self.session.rollback()
-            raise HTTPException(status_code=500, detail=e._message())
+            raise DatabaseException(status_code=500, message=e._message())
 
     def delete(self, database_model: ModelType) -> None:
         try:
@@ -49,4 +50,4 @@ class BaseRepository(Generic[ModelType], IBaseRepository[ModelType]):
             self.session.commit()
         except SQLAlchemyError as e:
             self.session.rollback()
-            raise HTTPException(status_code=500, detail=e._message())
+            raise DatabaseException(status_code=500, message=e._message())
