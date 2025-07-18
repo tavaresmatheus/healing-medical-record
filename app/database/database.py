@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, create_engine
 
+from app.config.config import Settings
 from app.models.user import User
 from app.models.medical_speciality import MedicalSpeciality
 from app.models.doctor import Doctor
@@ -8,7 +9,7 @@ from app.models.doctor_crm import DoctorCrm
 from app.models.doctor_medical_speciality import DoctorMedicalSpeciality
 from app.models.medical_record import MedicalRecord
 
-sqlite_file_name = 'database.db'
-sqlite_url = f'sqlite:///{sqlite_file_name}'
+settings = Settings()
+connection_url = f'postgresql://{settings.database_user}:{settings.database_password}@healing-medical-record-postgres:5432/{settings.app_database}'
 
-engine = create_engine(sqlite_url, echo=True)
+engine = create_engine(connection_url, echo=True)

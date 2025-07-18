@@ -23,7 +23,7 @@ def upgrade() -> None:
         'doctors_medical_specialities',
         sa.Column('doctor_medical_speciality_id', sa.Uuid, primary_key=True),
         sa.Column('doctor_id', sa.Uuid, sa.ForeignKey('doctors.doctor_id'), nullable=False),
-        sa.Column('medical_speciality_id', sa.Uuid, sa.ForeignKey('medical_specialities.medical_speciality_id]'), nullable=False),
+        sa.Column('medical_speciality_id', sa.Uuid, sa.ForeignKey('medical_specialities.medical_speciality_id'), nullable=False),
         sa.Column('created_at', sa.DateTime, server_default=sa.func.now(), nullable=True),
         sa.Column('updated_at', sa.DateTime(), server_default=sa.func.now(), onupdate=sa.func.now(), nullable=True)
         )

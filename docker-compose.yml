@@ -8,3 +8,15 @@ services:
     ports:
       - 8080:8080
     command: "fastapi run app/main.py --port 8080 --reload"
+
+  healing-medical-record-postgres:
+    image: postgres:17.5-alpine3.22
+    container_name: healing-medical-record-postgres
+    environment:
+      POSTGRES_DB: ${APP_DATABASE}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
